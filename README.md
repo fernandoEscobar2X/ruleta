@@ -6,10 +6,10 @@ Este proyecto implementa una ruleta multijugador en tiempo real utilizando MQTT 
 
 ## ✍️ Autores
 
-- Angel Alexander  
-- Fernando  
-- Jorge Luis  
-- Axel Alain  
+- Angel Alexander Alducin Diaz 
+- Fernando Escobar Robles
+- Jorge Luis Ortega Zenteno
+- Axel Alain Vasquez Ramirez
 
 ---
 
@@ -60,7 +60,7 @@ El archivo `tasks.json` permite iniciar el entorno Docker fácilmente dependiend
     {
       "label": "Iniciar Ruleta Docker MacOS",
       "type": "shell",
-      "command": "./docker_cleanup.sh",
+      "command": "./iniciar-ruleta.sh",
       "group": "build",
       "problemMatcher": []
     }
@@ -103,7 +103,7 @@ docker-compose up
 ### ▶️ 3. Ejecutar desde Visual Studio Code
 
 1. Abre el proyecto en VS Code.
-2. Presiona `Ctrl+Shift+P` o `Cmd+Shift+P` → `Run Task`.
+2. Presiona `Ctrl+Shift+B` o `Cmd+Shift+B` → `Run Task`.
 3. Selecciona una de las dos tareas según tu sistema:
    - `Iniciar Ruleta Docker Windows`
    - `Iniciar Ruleta Docker MacOS`
@@ -114,18 +114,40 @@ docker-compose up
 
 ```
 ruleta/
+├── .vscode/
+│   └── tasks.json
 ├── backend/
 │   ├── casino.js
 │   ├── ruleta.js
-│   ├── espera-mysql.sh
+│   └── package.json
+├── data/
 │   └── ...
 ├── frontend/
-│   ├── index.html
+│   ├── css/
+│   │   ├── historial.css
+│   │   ├── login.css
+│   │   └── ruleta.css
+│   ├── img/
+│   │   └── ...
+│   ├── js/
+│   │   ├── historial.js
+│   │   ├── login.js
+│   │   └── main.js
 │   ├── historial.html
-│   └── img/
+│   ├── login.html
+│   └── ruleta.html
+├── mqtt/
+│   └── mqtt.conf
+├── mysql/
+│   └── init.mysql
+├── .dockerignore
+├── .gitattributes
+├── .gitignore
 ├── docker-compose.yml
+├── Dockerfile
+├── espera-mysql.sh
 ├── iniciar-ruleta.bat
-├── docker_cleanup.sh
+├── iniciar-ruleta.sh
 └── README.md
 ```
 
@@ -136,14 +158,6 @@ ruleta/
 - Se accede mediante un calendario animado en `historial.html`.
 - Los días con apuestas muestran una ficha.
 - Al hacer clic en una fecha, se despliega un modal con todas las apuestas registradas ese día.
-
----
-
-## 🛠 Notas adicionales
-
-- El sistema está optimizado para el año **2025** y no permite navegar fuera de ese rango.
-- Las apuestas se sincronizan en tiempo real vía MQTT, y se almacenan inmediatamente en la base de datos MySQL.
-- Se usó el comando `ALTER TABLE` para asegurar que `fecha` guarde correctamente el timestamp con la hora local mexicana.
 
 ---
 

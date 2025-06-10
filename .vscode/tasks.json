@@ -11,7 +11,7 @@
       {
         "label": "Iniciar Ruleta Docker MacOS",
         "type": "shell",
-        "command": "./docker_cleanup.sh",  
+        "command": "./iniciar-ruleta.sh",  // Darle permisos en la terminal para los de Mac ---> chmod +x iniciar-ruleta.sh
         "group": "build",
         "problemMatcher": []
       },
